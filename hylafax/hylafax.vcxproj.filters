@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{a35dea9a-e2ba-4797-8b74-bfd1e42ec615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\config">
+      <UniqueIdentifier>{28e47a4e-2548-4eff-81dc-9c94ddce6060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\debian">
+      <UniqueIdentifier>{f0f8c65d-985e-487e-a064-4dd7eeda9a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\dist">
+      <UniqueIdentifier>{fbcae4fb-9ebd-41ec-9a71-cd0b31a088d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\doc">
+      <UniqueIdentifier>{d1e3f062-6bef-4cf4-a7e7-5d1efc270ec0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\etc">
+      <UniqueIdentifier>{316ebfaa-67ed-4fd8-bb0b-7bc96629e725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\faxalter">
+      <UniqueIdentifier>{506b8a7b-14b2-4c81-8d36-543d7408d725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\faxcover">
+      <UniqueIdentifier>{e41259f7-87be-4997-a882-a1fa2946d573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\faxd">
+      <UniqueIdentifier>{f9f62821-1c1d-4c90-9f00-24a5740b1d93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\faxmail">
+      <UniqueIdentifier>{35300c1a-0f0b-4f55-ba72-cac337619441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\faxrm">
+      <UniqueIdentifier>{415b43ba-7131-4729-a2dd-751007f71862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\faxstat">
+      <UniqueIdentifier>{fa81eeb2-11f6-4d55-95b9-aa7d62e16f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\hfaxd">
+      <UniqueIdentifier>{42cc27bc-050a-4977-8c87-0889408ee2d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\libhylafax">
+      <UniqueIdentifier>{567cf3b9-0295-4414-8abf-2f43ec1ec47b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\man">
+      <UniqueIdentifier>{7bea5ad7-021f-4d49-a766-6d4cd680fac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\misc">
+      <UniqueIdentifier>{cc9f7925-b892-44e4-8c38-66da3de52918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\pkg">
+      <UniqueIdentifier>{a4704c91-f4ac-493e-abe5-46c538f738b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\po">
+      <UniqueIdentifier>{ec52952c-7175-4b4b-a181-139ec36e3243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\port">
+      <UniqueIdentifier>{7a003879-6915-48aa-a90e-c3213ddde0a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\regex">
+      <UniqueIdentifier>{7820ba53-e198-4cb5-b147-63490f820f8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\rpm">
+      <UniqueIdentifier>{942b38a4-41e6-4249-ba46-ad742b55a046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\sendfax">
+      <UniqueIdentifier>{d14b794b-4308-40d9-9e82-1bddac465169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\sendpage">
+      <UniqueIdentifier>{3c9173b1-f569-4ce3-b1b3-7545c6f046fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\sgi2fax">
+      <UniqueIdentifier>{55591b3a-32f5-41a0-9a44-53fd1c1faa1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\util">
+      <UniqueIdentifier>{2da627ed-735f-43d2-90cf-6c67cddb0d8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\convert">
+      <UniqueIdentifier>{8c93744a-e049-4727-86db-2c24d827d53d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\etc\copy.h">
+      <Filter>Source Files\src\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Batch.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class0.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class1.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class1Ersatz.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class2.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class2Ersatz.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class10.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class20.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Class21.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\ClassModem.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\DestInfo.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxAcctInfo.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\faxApp.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxFont.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\faxGettyApp.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxItem.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxMachineInfo.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxMachineLog.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxModem.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\faxQueueApp.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxRequest.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\faxSendApp.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxSendStatus.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxServer.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\FaxTrace.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\G3Decoder.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\G3Encoder.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Getty.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\GettyBSD.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\GettySysV.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\HDLCFrame.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\HylaClient.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\ixo.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Job.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\JobControl.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\MemoryDecoder.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Modem.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\ModemConfig.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\ModemServer.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\NSF.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\pageSendApp.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\PCFFont.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\QLink.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\ServerConfig.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\t4.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\tif_fax3.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\Trigger.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\TriggerRef.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxd\UUCPLock.h">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxmail\MIMEState.h">
+      <Filter>Source Files\src\faxmail</Filter>
+    </ClInclude>
+    <ClInclude Include="src\faxmail\MsgFmt.h">
+      <Filter>Source Files\src\faxmail</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\FileCache.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\HylaFAXServer.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\InetFaxServer.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\manifest.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\SNPPServer.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\SuperServer.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\Trace.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hfaxd\UnixFaxServer.h">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Array.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\BoolArray.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\CallID.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\class2.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Class2Params.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\DialRules.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Dictionary.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Dispatcher.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\DSmacros.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\FaxClient.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\FaxConfig.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\FaxDB.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\FaxParams.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\FaxRecvInfo.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\FaxSendInfo.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\InetTransport.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\IOHandler.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\JobExt.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\ModemExt.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\NLS.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Obj.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\PageSize.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Ptr.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Range.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\RE.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\REArray.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\REDict.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\SendFaxClient.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\SendFaxJob.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Sequence.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\SNPPClient.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\SNPPJob.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Socket.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\StackBuffer.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Status.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Str.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\StrArray.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\StrDict.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Sys.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\SystemLog.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\t.30.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\TextFormat.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\TimeOfDay.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Timeout.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Transport.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\TypeRules.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\Types.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libhylafax\UnixTransport.h">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\regex\cclass.h">
+      <Filter>Source Files\src\regex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\regex\cname.h">
+      <Filter>Source Files\src\regex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\regex\regex.h">
+      <Filter>Source Files\src\regex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\regex\regex2.h">
+      <Filter>Source Files\src\regex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\regex\utils.h">
+      <Filter>Source Files\src\regex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sgi2fax\hipass.h">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sgi2fax\izoom.h">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sgi2fax\lum.h">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sgi2fax\lut.h">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="port.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\convert\convertType.h">
+      <Filter>Source Files\src\convert</Filter>
+    </ClInclude>
+    <ClInclude Include="src\convert\msdirent.h">
+      <Filter>Source Files\src\convert</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hylafax.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\etc\lockname.c">
+      <Filter>Source Files\src\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\etc\ondelay.c">
+      <Filter>Source Files\src\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxalter\faxalter.cpp">
+      <Filter>Source Files\src\faxalter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxcover\faxcover.cpp">
+      <Filter>Source Files\src\faxcover</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Batch.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\choptest.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class0.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class1.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class1Ersatz.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class1Poll.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class1Recv.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class1Send.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class2.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class2Ersatz.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class2Poll.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class2Recv.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class2Send.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class10.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class20.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Class21.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\ClassModem.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\CopyQuality.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\cqtest.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\DestInfo.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxAcctInfo.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\faxApp.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxFont.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\faxGettyApp.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxItem.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxMachineInfo.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxMachineLog.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxModem.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxPoll.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\faxQCleanApp.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\faxQueueApp.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxRecv.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxRequest.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxSend.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\faxSendApp.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\FaxServer.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\G3Decoder.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\G3Encoder.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Getty.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\GettyBSD.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\GettySysV.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\HDLCFrame.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\HylaClient.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Job.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\JobControl.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\MemoryDecoder.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\mkhash.c">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Modem.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\ModemConfig.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\ModemServer.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\NSF.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\pageSendApp.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\PCFFont.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\QLink.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\ServerConfig.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\TagLine.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\tagtest.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\Trigger.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\TriggerRef.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\trigtest.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\tsitest.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxd\UUCPLock.cpp">
+      <Filter>Source Files\src\faxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxmail\faxmail.cpp">
+      <Filter>Source Files\src\faxmail</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxmail\MIMEState.cpp">
+      <Filter>Source Files\src\faxmail</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxmail\MsgFmt.cpp">
+      <Filter>Source Files\src\faxmail</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxrm\faxrm.cpp">
+      <Filter>Source Files\src\faxrm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\faxstat\faxstat.cpp">
+      <Filter>Source Files\src\faxstat</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\Admin.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\FIFO.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\FileCache.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\FileSystem.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\FileTransfer.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\HylaFAXServer.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\InetFaxServer.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\Jobs.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\Login.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\main.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\PAM.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\Parser.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\RecvQueue.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\SNPPServer.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\Status.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\SuperServer.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\Trigger.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\UnixFaxServer.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hfaxd\User.cpp">
+      <Filter>Source Files\src\hfaxd</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\cvtfacility.c">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\fxassert.c">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Array.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\AtSyntax.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\BoolArray.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\CallID.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Class2Params.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\DialRules.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Dictionary.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Dispatcher.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Fatal.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\FaxClient.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\FaxConfig.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\FaxDB.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\FaxParams.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\FaxRecvInfo.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\FaxSendInfo.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\FmtTime.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\InetTransport.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\IOHandler.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\JobExt.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\ModemExt.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\NLS.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Obj.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\PageSize.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Range.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\RE.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\REArray.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\REDict.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\SendFaxClient.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\SendFaxJob.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Sequence.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\SNPPClient.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\SNPPJob.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\StackBuffer.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Status.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Str.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\StrArray.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\StrDict.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Sys.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\SystemLog.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\TextFormat.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\TimeOfDay.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Timeout.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\Transport.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\TypeRules.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libhylafax\UnixTransport.cpp">
+      <Filter>Source Files\src\libhylafax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\flock.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\ftruncate.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\getopt.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\mkdtemp.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\mkstemp.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\random.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\setegid.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\setenv.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\seteuid.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\setvbuf.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\snprintf.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\srandom.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\strcasecmp.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\strtod.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\strtoul.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\syslog.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\vsnprintf.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\vsyslog.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\port\writev.c">
+      <Filter>Source Files\src\port</Filter>
+    </ClCompile>
+    <ClCompile Include="src\regex\engine.c">
+      <Filter>Source Files\src\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\regex\regcomp.c">
+      <Filter>Source Files\src\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\regex\regerror.c">
+      <Filter>Source Files\src\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\regex\regexec.c">
+      <Filter>Source Files\src\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\regex\regfree.c">
+      <Filter>Source Files\src\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sendfax\sendfax.cpp">
+      <Filter>Source Files\src\sendfax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sendpage\sendpage.cpp">
+      <Filter>Source Files\src\sendpage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sgi2fax\hipass.c">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sgi2fax\imgtofax.c">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sgi2fax\izoom.c">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sgi2fax\lut.c">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sgi2fax\rand.c">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sgi2fax\row.c">
+      <Filter>Source Files\src\sgi2fax</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxadduser.c">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxconfig.c">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxdeluser.c">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxmodem.c">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxmsg.c">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxstate.c">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\checkat.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\dialtest.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxfetch.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxinfo.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\faxwatch.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\textfmt.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\tiffcheck.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\typetest.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

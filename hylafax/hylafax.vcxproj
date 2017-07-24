@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{29D3582C-6821-442D-A3D5-615BD831406B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>hylafax</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src/config;src/debian;src/dist;src/doc;src/etc;src/faxlter;src/faxcover;src/faxd;src/faxmail;src/faxrm;src/faxstat;src/hfaxd;src/libhylafax;src/man;src/misc;src/pkg;src/po;src/port;src/regex;src/rpm;src/sendfax;src/sendpage;src/sgi2fax;src/util;./;src/convert;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="config.h" />
+    <ClInclude Include="port.h" />
+    <ClInclude Include="src\convert\convertType.h" />
+    <ClInclude Include="src\convert\msdirent.h" />
+    <ClInclude Include="src\etc\copy.h" />
+    <ClInclude Include="src\faxd\Batch.h" />
+    <ClInclude Include="src\faxd\Class0.h" />
+    <ClInclude Include="src\faxd\Class1.h" />
+    <ClInclude Include="src\faxd\Class10.h" />
+    <ClInclude Include="src\faxd\Class1Ersatz.h" />
+    <ClInclude Include="src\faxd\Class2.h" />
+    <ClInclude Include="src\faxd\Class20.h" />
+    <ClInclude Include="src\faxd\Class21.h" />
+    <ClInclude Include="src\faxd\Class2Ersatz.h" />
+    <ClInclude Include="src\faxd\ClassModem.h" />
+    <ClInclude Include="src\faxd\DestInfo.h" />
+    <ClInclude Include="src\faxd\FaxAcctInfo.h" />
+    <ClInclude Include="src\faxd\faxApp.h" />
+    <ClInclude Include="src\faxd\FaxFont.h" />
+    <ClInclude Include="src\faxd\faxGettyApp.h" />
+    <ClInclude Include="src\faxd\FaxItem.h" />
+    <ClInclude Include="src\faxd\FaxMachineInfo.h" />
+    <ClInclude Include="src\faxd\FaxMachineLog.h" />
+    <ClInclude Include="src\faxd\FaxModem.h" />
+    <ClInclude Include="src\faxd\faxQueueApp.h" />
+    <ClInclude Include="src\faxd\FaxRequest.h" />
+    <ClInclude Include="src\faxd\faxSendApp.h" />
+    <ClInclude Include="src\faxd\FaxSendStatus.h" />
+    <ClInclude Include="src\faxd\FaxServer.h" />
+    <ClInclude Include="src\faxd\FaxTrace.h" />
+    <ClInclude Include="src\faxd\G3Decoder.h" />
+    <ClInclude Include="src\faxd\G3Encoder.h" />
+    <ClInclude Include="src\faxd\Getty.h" />
+    <ClInclude Include="src\faxd\GettyBSD.h" />
+    <ClInclude Include="src\faxd\GettySysV.h" />
+    <ClInclude Include="src\faxd\HDLCFrame.h" />
+    <ClInclude Include="src\faxd\HylaClient.h" />
+    <ClInclude Include="src\faxd\ixo.h" />
+    <ClInclude Include="src\faxd\Job.h" />
+    <ClInclude Include="src\faxd\JobControl.h" />
+    <ClInclude Include="src\faxd\MemoryDecoder.h" />
+    <ClInclude Include="src\faxd\Modem.h" />
+    <ClInclude Include="src\faxd\ModemConfig.h" />
+    <ClInclude Include="src\faxd\ModemServer.h" />
+    <ClInclude Include="src\faxd\NSF.h" />
+    <ClInclude Include="src\faxd\pageSendApp.h" />
+    <ClInclude Include="src\faxd\PCFFont.h" />
+    <ClInclude Include="src\faxd\QLink.h" />
+    <ClInclude Include="src\faxd\ServerConfig.h" />
+    <ClInclude Include="src\faxd\t4.h" />
+    <ClInclude Include="src\faxd\tif_fax3.h" />
+    <ClInclude Include="src\faxd\Trigger.h" />
+    <ClInclude Include="src\faxd\TriggerRef.h" />
+    <ClInclude Include="src\faxd\UUCPLock.h" />
+    <ClInclude Include="src\faxmail\MIMEState.h" />
+    <ClInclude Include="src\faxmail\MsgFmt.h" />
+    <ClInclude Include="src\hfaxd\FileCache.h" />
+    <ClInclude Include="src\hfaxd\HylaFAXServer.h" />
+    <ClInclude Include="src\hfaxd\InetFaxServer.h" />
+    <ClInclude Include="src\hfaxd\manifest.h" />
+    <ClInclude Include="src\hfaxd\SNPPServer.h" />
+    <ClInclude Include="src\hfaxd\SuperServer.h" />
+    <ClInclude Include="src\hfaxd\Trace.h" />
+    <ClInclude Include="src\hfaxd\UnixFaxServer.h" />
+    <ClInclude Include="src\libhylafax\Array.h" />
+    <ClInclude Include="src\libhylafax\BoolArray.h" />
+    <ClInclude Include="src\libhylafax\CallID.h" />
+    <ClInclude Include="src\libhylafax\class2.h" />
+    <ClInclude Include="src\libhylafax\Class2Params.h" />
+    <ClInclude Include="src\libhylafax\DialRules.h" />
+    <ClInclude Include="src\libhylafax\Dictionary.h" />
+    <ClInclude Include="src\libhylafax\Dispatcher.h" />
+    <ClInclude Include="src\libhylafax\DSmacros.h" />
+    <ClInclude Include="src\libhylafax\FaxClient.h" />
+    <ClInclude Include="src\libhylafax\FaxConfig.h" />
+    <ClInclude Include="src\libhylafax\FaxDB.h" />
+    <ClInclude Include="src\libhylafax\FaxParams.h" />
+    <ClInclude Include="src\libhylafax\FaxRecvInfo.h" />
+    <ClInclude Include="src\libhylafax\FaxSendInfo.h" />
+    <ClInclude Include="src\libhylafax\InetTransport.h" />
+    <ClInclude Include="src\libhylafax\IOHandler.h" />
+    <ClInclude Include="src\libhylafax\JobExt.h" />
+    <ClInclude Include="src\libhylafax\ModemExt.h" />
+    <ClInclude Include="src\libhylafax\NLS.h" />
+    <ClInclude Include="src\libhylafax\Obj.h" />
+    <ClInclude Include="src\libhylafax\PageSize.h" />
+    <ClInclude Include="src\libhylafax\Ptr.h" />
+    <ClInclude Include="src\libhylafax\Range.h" />
+    <ClInclude Include="src\libhylafax\RE.h" />
+    <ClInclude Include="src\libhylafax\REArray.h" />
+    <ClInclude Include="src\libhylafax\REDict.h" />
+    <ClInclude Include="src\libhylafax\SendFaxClient.h" />
+    <ClInclude Include="src\libhylafax\SendFaxJob.h" />
+    <ClInclude Include="src\libhylafax\Sequence.h" />
+    <ClInclude Include="src\libhylafax\SNPPClient.h" />
+    <ClInclude Include="src\libhylafax\SNPPJob.h" />
+    <ClInclude Include="src\libhylafax\Socket.h" />
+    <ClInclude Include="src\libhylafax\StackBuffer.h" />
+    <ClInclude Include="src\libhylafax\Status.h" />
+    <ClInclude Include="src\libhylafax\Str.h" />
+    <ClInclude Include="src\libhylafax\StrArray.h" />
+    <ClInclude Include="src\libhylafax\StrDict.h" />
+    <ClInclude Include="src\libhylafax\Sys.h" />
+    <ClInclude Include="src\libhylafax\SystemLog.h" />
+    <ClInclude Include="src\libhylafax\t.30.h" />
+    <ClInclude Include="src\libhylafax\TextFormat.h" />
+    <ClInclude Include="src\libhylafax\TimeOfDay.h" />
+    <ClInclude Include="src\libhylafax\Timeout.h" />
+    <ClInclude Include="src\libhylafax\Transport.h" />
+    <ClInclude Include="src\libhylafax\TypeRules.h" />
+    <ClInclude Include="src\libhylafax\Types.h" />
+    <ClInclude Include="src\libhylafax\UnixTransport.h" />
+    <ClInclude Include="src\regex\cclass.h" />
+    <ClInclude Include="src\regex\cname.h" />
+    <ClInclude Include="src\regex\regex.h" />
+    <ClInclude Include="src\regex\regex2.h" />
+    <ClInclude Include="src\regex\utils.h" />
+    <ClInclude Include="src\sgi2fax\hipass.h" />
+    <ClInclude Include="src\sgi2fax\izoom.h" />
+    <ClInclude Include="src\sgi2fax\lum.h" />
+    <ClInclude Include="src\sgi2fax\lut.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="hylafax.cpp" />
+    <ClCompile Include="src\etc\lockname.c" />
+    <ClCompile Include="src\etc\ondelay.c" />
+    <ClCompile Include="src\faxalter\faxalter.cpp" />
+    <ClCompile Include="src\faxcover\faxcover.cpp" />
+    <ClCompile Include="src\faxd\Batch.cpp" />
+    <ClCompile Include="src\faxd\choptest.cpp" />
+    <ClCompile Include="src\faxd\Class0.cpp" />
+    <ClCompile Include="src\faxd\Class1.cpp" />
+    <ClCompile Include="src\faxd\Class10.cpp" />
+    <ClCompile Include="src\faxd\Class1Ersatz.cpp" />
+    <ClCompile Include="src\faxd\Class1Poll.cpp" />
+    <ClCompile Include="src\faxd\Class1Recv.cpp" />
+    <ClCompile Include="src\faxd\Class1Send.cpp" />
+    <ClCompile Include="src\faxd\Class2.cpp" />
+    <ClCompile Include="src\faxd\Class20.cpp" />
+    <ClCompile Include="src\faxd\Class21.cpp" />
+    <ClCompile Include="src\faxd\Class2Ersatz.cpp" />
+    <ClCompile Include="src\faxd\Class2Poll.cpp" />
+    <ClCompile Include="src\faxd\Class2Recv.cpp" />
+    <ClCompile Include="src\faxd\Class2Send.cpp" />
+    <ClCompile Include="src\faxd\ClassModem.cpp" />
+    <ClCompile Include="src\faxd\CopyQuality.cpp" />
+    <ClCompile Include="src\faxd\cqtest.cpp" />
+    <ClCompile Include="src\faxd\DestInfo.cpp" />
+    <ClCompile Include="src\faxd\FaxAcctInfo.cpp" />
+    <ClCompile Include="src\faxd\faxApp.cpp" />
+    <ClCompile Include="src\faxd\FaxFont.cpp" />
+    <ClCompile Include="src\faxd\faxGettyApp.cpp" />
+    <ClCompile Include="src\faxd\FaxItem.cpp" />
+    <ClCompile Include="src\faxd\FaxMachineInfo.cpp" />
+    <ClCompile Include="src\faxd\FaxMachineLog.cpp" />
+    <ClCompile Include="src\faxd\FaxModem.cpp" />
+    <ClCompile Include="src\faxd\FaxPoll.cpp" />
+    <ClCompile Include="src\faxd\faxQCleanApp.cpp" />
+    <ClCompile Include="src\faxd\faxQueueApp.cpp" />
+    <ClCompile Include="src\faxd\FaxRecv.cpp" />
+    <ClCompile Include="src\faxd\FaxRequest.cpp" />
+    <ClCompile Include="src\faxd\FaxSend.cpp" />
+    <ClCompile Include="src\faxd\faxSendApp.cpp" />
+    <ClCompile Include="src\faxd\FaxServer.cpp" />
+    <ClCompile Include="src\faxd\G3Decoder.cpp" />
+    <ClCompile Include="src\faxd\G3Encoder.cpp" />
+    <ClCompile Include="src\faxd\Getty.cpp" />
+    <ClCompile Include="src\faxd\GettyBSD.cpp" />
+    <ClCompile Include="src\faxd\GettySysV.cpp" />
+    <ClCompile Include="src\faxd\HDLCFrame.cpp" />
+    <ClCompile Include="src\faxd\HylaClient.cpp" />
+    <ClCompile Include="src\faxd\Job.cpp" />
+    <ClCompile Include="src\faxd\JobControl.cpp" />
+    <ClCompile Include="src\faxd\MemoryDecoder.cpp" />
+    <ClCompile Include="src\faxd\mkhash.c" />
+    <ClCompile Include="src\faxd\Modem.cpp" />
+    <ClCompile Include="src\faxd\ModemConfig.cpp" />
+    <ClCompile Include="src\faxd\ModemServer.cpp" />
+    <ClCompile Include="src\faxd\NSF.cpp" />
+    <ClCompile Include="src\faxd\pageSendApp.cpp" />
+    <ClCompile Include="src\faxd\PCFFont.cpp" />
+    <ClCompile Include="src\faxd\QLink.cpp" />
+    <ClCompile Include="src\faxd\ServerConfig.cpp" />
+    <ClCompile Include="src\faxd\TagLine.cpp" />
+    <ClCompile Include="src\faxd\tagtest.cpp" />
+    <ClCompile Include="src\faxd\Trigger.cpp" />
+    <ClCompile Include="src\faxd\TriggerRef.cpp" />
+    <ClCompile Include="src\faxd\trigtest.cpp" />
+    <ClCompile Include="src\faxd\tsitest.cpp" />
+    <ClCompile Include="src\faxd\UUCPLock.cpp" />
+    <ClCompile Include="src\faxmail\faxmail.cpp" />
+    <ClCompile Include="src\faxmail\MIMEState.cpp" />
+    <ClCompile Include="src\faxmail\MsgFmt.cpp" />
+    <ClCompile Include="src\faxrm\faxrm.cpp" />
+    <ClCompile Include="src\faxstat\faxstat.cpp" />
+    <ClCompile Include="src\hfaxd\Admin.cpp" />
+    <ClCompile Include="src\hfaxd\FIFO.cpp" />
+    <ClCompile Include="src\hfaxd\FileCache.cpp" />
+    <ClCompile Include="src\hfaxd\FileSystem.cpp" />
+    <ClCompile Include="src\hfaxd\FileTransfer.cpp" />
+    <ClCompile Include="src\hfaxd\HylaFAXServer.cpp" />
+    <ClCompile Include="src\hfaxd\InetFaxServer.cpp" />
+    <ClCompile Include="src\hfaxd\Jobs.cpp" />
+    <ClCompile Include="src\hfaxd\Login.cpp" />
+    <ClCompile Include="src\hfaxd\main.cpp" />
+    <ClCompile Include="src\hfaxd\PAM.cpp" />
+    <ClCompile Include="src\hfaxd\Parser.cpp" />
+    <ClCompile Include="src\hfaxd\RecvQueue.cpp" />
+    <ClCompile Include="src\hfaxd\SNPPServer.cpp" />
+    <ClCompile Include="src\hfaxd\Status.cpp" />
+    <ClCompile Include="src\hfaxd\SuperServer.cpp" />
+    <ClCompile Include="src\hfaxd\Trigger.cpp" />
+    <ClCompile Include="src\hfaxd\UnixFaxServer.cpp" />
+    <ClCompile Include="src\hfaxd\User.cpp" />
+    <ClCompile Include="src\libhylafax\Array.cpp" />
+    <ClCompile Include="src\libhylafax\AtSyntax.cpp" />
+    <ClCompile Include="src\libhylafax\BoolArray.cpp" />
+    <ClCompile Include="src\libhylafax\CallID.cpp" />
+    <ClCompile Include="src\libhylafax\Class2Params.cpp" />
+    <ClCompile Include="src\libhylafax\cvtfacility.c" />
+    <ClCompile Include="src\libhylafax\DialRules.cpp" />
+    <ClCompile Include="src\libhylafax\Dictionary.cpp" />
+    <ClCompile Include="src\libhylafax\Dispatcher.cpp" />
+    <ClCompile Include="src\libhylafax\Fatal.cpp" />
+    <ClCompile Include="src\libhylafax\FaxClient.cpp" />
+    <ClCompile Include="src\libhylafax\FaxConfig.cpp" />
+    <ClCompile Include="src\libhylafax\FaxDB.cpp" />
+    <ClCompile Include="src\libhylafax\FaxParams.cpp" />
+    <ClCompile Include="src\libhylafax\FaxRecvInfo.cpp" />
+    <ClCompile Include="src\libhylafax\FaxSendInfo.cpp" />
+    <ClCompile Include="src\libhylafax\FmtTime.cpp" />
+    <ClCompile Include="src\libhylafax\fxassert.c" />
+    <ClCompile Include="src\libhylafax\InetTransport.cpp" />
+    <ClCompile Include="src\libhylafax\IOHandler.cpp" />
+    <ClCompile Include="src\libhylafax\JobExt.cpp" />
+    <ClCompile Include="src\libhylafax\ModemExt.cpp" />
+    <ClCompile Include="src\libhylafax\NLS.cpp" />
+    <ClCompile Include="src\libhylafax\Obj.cpp" />
+    <ClCompile Include="src\libhylafax\PageSize.cpp" />
+    <ClCompile Include="src\libhylafax\Range.cpp" />
+    <ClCompile Include="src\libhylafax\RE.cpp" />
+    <ClCompile Include="src\libhylafax\REArray.cpp" />
+    <ClCompile Include="src\libhylafax\REDict.cpp" />
+    <ClCompile Include="src\libhylafax\SendFaxClient.cpp" />
+    <ClCompile Include="src\libhylafax\SendFaxJob.cpp" />
+    <ClCompile Include="src\libhylafax\Sequence.cpp" />
+    <ClCompile Include="src\libhylafax\SNPPClient.cpp" />
+    <ClCompile Include="src\libhylafax\SNPPJob.cpp" />
+    <ClCompile Include="src\libhylafax\StackBuffer.cpp" />
+    <ClCompile Include="src\libhylafax\Status.cpp" />
+    <ClCompile Include="src\libhylafax\Str.cpp" />
+    <ClCompile Include="src\libhylafax\StrArray.cpp" />
+    <ClCompile Include="src\libhylafax\StrDict.cpp" />
+    <ClCompile Include="src\libhylafax\Sys.cpp" />
+    <ClCompile Include="src\libhylafax\SystemLog.cpp" />
+    <ClCompile Include="src\libhylafax\TextFormat.cpp" />
+    <ClCompile Include="src\libhylafax\TimeOfDay.cpp" />
+    <ClCompile Include="src\libhylafax\Timeout.cpp" />
+    <ClCompile Include="src\libhylafax\Transport.cpp" />
+    <ClCompile Include="src\libhylafax\TypeRules.cpp" />
+    <ClCompile Include="src\libhylafax\UnixTransport.cpp" />
+    <ClCompile Include="src\port\flock.c" />
+    <ClCompile Include="src\port\ftruncate.c" />
+    <ClCompile Include="src\port\getopt.c" />
+    <ClCompile Include="src\port\mkdtemp.c" />
+    <ClCompile Include="src\port\mkstemp.c" />
+    <ClCompile Include="src\port\random.c" />
+    <ClCompile Include="src\port\setegid.c" />
+    <ClCompile Include="src\port\setenv.c" />
+    <ClCompile Include="src\port\seteuid.c" />
+    <ClCompile Include="src\port\setvbuf.c" />
+    <ClCompile Include="src\port\snprintf.c" />
+    <ClCompile Include="src\port\srandom.c" />
+    <ClCompile Include="src\port\strcasecmp.c" />
+    <ClCompile Include="src\port\strtod.c" />
+    <ClCompile Include="src\port\strtoul.c" />
+    <ClCompile Include="src\port\syslog.c" />
+    <ClCompile Include="src\port\vsnprintf.c" />
+    <ClCompile Include="src\port\vsyslog.c" />
+    <ClCompile Include="src\port\writev.c" />
+    <ClCompile Include="src\regex\engine.c" />
+    <ClCompile Include="src\regex\regcomp.c" />
+    <ClCompile Include="src\regex\regerror.c" />
+    <ClCompile Include="src\regex\regexec.c" />
+    <ClCompile Include="src\regex\regfree.c" />
+    <ClCompile Include="src\sendfax\sendfax.cpp" />
+    <ClCompile Include="src\sendpage\sendpage.cpp" />
+    <ClCompile Include="src\sgi2fax\hipass.c" />
+    <ClCompile Include="src\sgi2fax\imgtofax.c" />
+    <ClCompile Include="src\sgi2fax\izoom.c" />
+    <ClCompile Include="src\sgi2fax\lut.c" />
+    <ClCompile Include="src\sgi2fax\rand.c" />
+    <ClCompile Include="src\sgi2fax\row.c" />
+    <ClCompile Include="src\util\checkat.cpp" />
+    <ClCompile Include="src\util\dialtest.cpp" />
+    <ClCompile Include="src\util\faxadduser.c" />
+    <ClCompile Include="src\util\faxconfig.c" />
+    <ClCompile Include="src\util\faxdeluser.c" />
+    <ClCompile Include="src\util\faxfetch.cpp" />
+    <ClCompile Include="src\util\faxinfo.cpp" />
+    <ClCompile Include="src\util\faxmodem.c" />
+    <ClCompile Include="src\util\faxmsg.c" />
+    <ClCompile Include="src\util\faxstate.c" />
+    <ClCompile Include="src\util\faxwatch.cpp" />
+    <ClCompile Include="src\util\textfmt.cpp" />
+    <ClCompile Include="src\util\tiffcheck.cpp" />
+    <ClCompile Include="src\util\typetest.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
