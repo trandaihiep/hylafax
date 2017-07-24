@@ -41,3 +41,7 @@
 *.pdb
 *.cache
 *.cache
+*.db
+*.opendb
+*.ipch
+*.suo
