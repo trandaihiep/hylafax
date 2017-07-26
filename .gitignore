@@ -45,3 +45,5 @@
 *.opendb
 *.ipch
 *.suo
+.vs/hylafax/v15/Solution.VC.db-shm
+.vs/hylafax/v15/Solution.VC.db-wal
