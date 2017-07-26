@@ -59,7 +59,7 @@ class Sys {
 public:
     static DIR* opendir(const char* dirname)
 	{ return ::opendir(dirname); }
-    static int chdir(const char* s)	{ return ::chdir(s); }
+    static int chdir(const char* s)	{ return SetCurrentDirectory(GetWC(s)); }
 
     static int stat(const char* file, struct stat& sb)
 	{ return ::stat(file, &sb); }
@@ -86,9 +86,9 @@ public:
 	{ return ::chmod(file, m); }
     static int chown(const char* file, uid_t u, gid_t g)
 	{ return ::chown(file, u, g); }
-    static int mkfifo(const char* path, mode_t mode)
+    static int mkfifo(const char* path, int mode)
 	{ return ::mkfifo(path, mode); }
-    static int open(const char* filename, int flags, mode_t m = 0)
+    static int open(const char* filename, int flags, int m = 0)
 	{ return ::open(filename, flags, m); }
     static int close(int fd)		{ return ::close(fd); }
     // NB: char* param to read+write for implicit cast when using fxStr's
