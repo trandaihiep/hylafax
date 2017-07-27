@@ -1252,57 +1252,63 @@ faxQueueApp::runConverter(Job& job, const char* app, char* const* argv, Status& 
     int pfd[2];
     if (pipe(pfd) >= 0) {
 	int fd;
-	pid_t pid = fork();
-	switch (pid) {
-	case -1:			// error
-	    jobError(job, "CONVERT DOCUMENT: fork: %m");
-	    status = Job::requeued;	// job should be retried
-	    Sys::close(pfd[1]);
-	    break;
-	case 0:				// child, exec command
-	    if (pfd[1] != STDOUT_FILENO)
-		dup2(pfd[1], STDOUT_FILENO);
-	    closeAllBut(STDOUT_FILENO);
-	    dup2(STDOUT_FILENO, STDERR_FILENO);
-	    fd = Sys::open(_PATH_DEVNULL, O_RDWR);
-	    if (fd != STDIN_FILENO)
-	    {
-		    dup2(fd, STDIN_FILENO);
-		    Sys::close(fd);
-	    }
-	    Sys::execv(app, argv);
-	    sleep(3);			// XXX give parent time to catch signal
-	    _exit(255);
-	    /*NOTREACHED*/
-	default:			// parent, read from pipe and wait
-	    Sys::close(pfd[1]);
-	    fxStr output;
-	    if (runConverter1(job, pfd[0], output)) {
-		int estat = -1;
-		(void) Sys::waitpid(pid, estat);
-		if (estat)
-		    jobError(job, "CONVERT DOCUMENT: exit status %#x", estat);
-		switch (estat) {
-		case 0:			 status = Job::done; break;
-	        case (254<<8):		 status = Job::rejected; break;
-		case (255<<8): case 255: status = Job::no_formatter; break;
-		default:		 status = Job::format_failed; break;
+
+	HANDLE handle = (HANDLE)_beginthreadex(NULL, 0, &WorkerThreadFuncConverter, (void *) pfd, 0, NULL );
+
+	if (!handle) {
+		jobError(job, "CONVERT DOCUMENT: fork: %m");
+		status = Job::requeued;	// job should be retried
+		Sys::close(pfd[1]);
+	} else {
+		Sys::close(pfd[1]);
+		fxStr output;
+		if (runConverter1(job, pfd[0], output)) {
+			int estat = -1;
+			(void) Sys::WaitForSingleObject(pid, estat);
+			if (estat)
+				jobError(job, "CONVERT DOCUMENT: exit status %#x", estat);
+			switch (estat) {
+			case 0:			 status = Job::done; break;
+			case (254<<8):		 status = Job::rejected; break;
+			case (255<<8): case 255: status = Job::no_formatter; break;
+			default:		 status = Job::format_failed; break;
+			}
+			result = Status(347, "%s", (const char*)output);
+		} else {
+			kill(pid, SIGTERM);
+			(void) Sys::WaitForSingleObject(pid);
+			status = Job::format_failed;
+			result = Status(347, "%s", (const char*)output);
 		}
-		result = Status(347, "%s", (const char*)output);
-	    } else {
-		kill(pid, SIGTERM);
-		(void) Sys::waitpid(pid);
-		status = Job::format_failed;
-		result = Status(347, "%s", (const char*)output);
-	    }
-	    break;
 	}
+	
 	Sys::close(pfd[0]);
     } else {
 	jobError(job, "CONVERT DOCUMENT: pipe: %m");
 	status = Job::format_failed;
     }
     return (status);
+}
+
+UINT WINAPI faxQueueApp::WorkerThreadFuncConverter(void* lpParam)
+{
+	int*fcfd = (int*)lpParam;
+
+	if (pfd[1] != STDOUT_FILENO)
+		dup2(pfd[1], STDOUT_FILENO);
+	closeAllBut(STDOUT_FILENO);
+	dup2(STDOUT_FILENO, STDERR_FILENO);
+	fd = Sys::open(_PATH_DEVNULL, O_RDWR);
+	if (fd != STDIN_FILENO)
+	{
+		dup2(fd, STDIN_FILENO);
+		Sys::close(fd);
+	}
+	Sys::execv(app, argv);
+	sleep(3);			// XXX give parent time to catch signal
+	_endthreadex(255);
+
+	return 0;
 }
 
 /*
@@ -1507,29 +1513,53 @@ faxQueueApp::sendStart(Batch& batch)
     // XXX start deadman timeout on active jobs
     const fxStr& cmd = pickCmd(batch.jobtype);
     fxStr dargs(batch.firstJob().getJCI().getArgs());
-    pid_t pid = fork();
+
+	workerthreaddata data;
+	data.cmd = cmd;
+	data.dargs = dargs;
+	data.deviceID = batch.modem->getDeviceID();
+	data.file = files;
+	data.nfile = nfiles;
+
+    HANDLE handle = (HANDLE)_beginthreadex(NULL, 0, &WorkerThreadFuncSendStart, (void *) &data, 0, NULL );
+
+	if (!handle) {
+		sendDone(batch, send_retry);
+		return;
+	}
+
+	// joinargs puts a leading space so this looks funny here
+	traceQueue(batch.firstJob(), "CMD START%s -m %s %s (PID %lu)"
+		, (const char*) joinargs(cmd, dargs)
+		, (const char*) batch.modem->getDeviceID()
+		, (const char*) files
+		, pid
+		);
+	batch.startSend(pid);
+	batch.firstJob().pid = pid;
+
+
     switch (pid) {
     case 0:				// child, startup command
-	closeAllBut(-1);		// NB: close 'em all
-	doexec(cmd, dargs, batch.modem->getDeviceID(), files, nfiles);
-	sleep(10);			// XXX give parent time to catch signal
-	_exit(127);
 	/*NOTREACHED*/
     case -1:				// fork failed, forward to sendDone
 	sendDone(batch, send_retry);
 	return;
     default:				// parent, setup handler to wait
-	// joinargs puts a leading space so this looks funny here
-	traceQueue(batch.firstJob(), "CMD START%s -m %s %s (PID %lu)"
-	    , (const char*) joinargs(cmd, dargs)
-	    , (const char*) batch.modem->getDeviceID()
-	    , (const char*) files
-	    , pid
-	);
-	batch.startSend(pid);
-	batch.firstJob().pid = pid;
 	break;
     }
+}
+
+UINT WINAPI faxQueueApp::WorkerThreadFuncSendStart(void* lpParam)
+{
+	workerthreaddata* data = (workerthreaddata*) lpParam;
+
+	closeAllBut(-1);		// NB: close 'em all
+	doexec(data->cmd, data->dargs, data->deviceID, data->file, data->nfile);
+	sleep(10);			// XXX give parent time to catch signal
+	_endthreadex(0);
+
+	return 0;
 }
 
 void
@@ -1835,7 +1865,8 @@ faxQueueApp::setReadyToRun(Job& job, FaxRequest& req)
 	int pfd[2];
 	if (pipe(pfd) >= 0) {
 	    pid_t pid = fork();
-	    switch (pid) {
+	    
+		switch (pid) {
 	    case -1:			// error - continue with no JCI
 		jobError(job, "JOB CONTROL: fork: %m");
 		Sys::close(pfd[1]);

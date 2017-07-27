@@ -242,5 +242,9 @@ public:
     bool	ready(long ms);			// ready modem for receive
     void	setLID(const fxStr& number);	// set local id string
     bool	supportsPolling() const;	// modem capability
+
+protected: // CALLBACK FUNC
+	static UINT WINAPI WorkerThreadFunc1(void* lpParam);
+	static UINT WINAPI WorkerThreadFunc2(void* lpParam);
 };
 #endif /* _CLASS1_ */

@@ -395,7 +395,7 @@ faxApp::runCmd(const char* cmd, bool changeIDs, IOHandler* waiter)
     default:
 	if (waiter == NULL)
 	{ int status = 0;
-	  Sys::waitpid(pid, status);
+	  Sys::WaitForSingleObject(pid, status);
 	  if (status != 0) {
 	    logError("Bad exit status %#o for \'%s\'", status, cmd);
 	    return (false);

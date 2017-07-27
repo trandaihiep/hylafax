@@ -58,6 +58,11 @@ public:
 	bool faxGettyApp::*p;
 	u_int		 def;
     };
+protected:
+	struct workerthreaddata {
+		int* pipefd;
+		fxStr cmd
+	};
 private:
 // runtime state
     fxStr	readyState;		// modem ready state to send queuer
@@ -136,6 +141,8 @@ private:
     void	notifyPageRecvd(TIFF* tif, FaxRecvInfo&, int ppm);
     void	notifyDocumentRecvd(FaxRecvInfo&);
     void	notifyRecvDone(FaxRecvInfo&);
+
+	static UINT WINAPI WorkerThreadFunc1(void* lpParam);
 public:
     faxGettyApp(const fxStr& device, const fxStr& devID);
     ~faxGettyApp();

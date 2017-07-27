@@ -33,7 +33,6 @@
 #include <stdarg.h>
 #include <sys/stat.h>
 #include <io.h>
-#include <sys/wait.h>
 #include <fcntl.h>
 #include <signal.h>
 #include <time.h>
@@ -111,9 +110,9 @@ public:
 #else
 	{ ::execv(path, argv, envp); }
 #endif
-    static pid_t waitpid(pid_t pid, int& status, int options = 0)
+    static pid_t WaitForSingleObject(pid_t pid, int& status, int options = 0)
 	{ return ::waitpid(pid, &status, options); }
-    static void waitpid(pid_t pid)	{ ::waitpid(pid, NULL, 0); }
+    static void WaitForSingleObject(HANDLE hThread)	{ ::WaitForSingleObject( hThread, INFINITE );  }
 
     static int getopt(int argc, char* const* argv, const char* optstring)
 #ifdef CONFIG_BADGETOPTPROTO

@@ -805,7 +805,7 @@ faxMailApp::runConverter(const fxStr& app, const fxStr& input, const fxStr& outp
     default:
 	int status;
 	close(fd);
-	if (Sys::waitpid(pid, status) == pid && status == 0)
+	if (Sys::WaitForSingleObject(pid, status) == pid && status == 0)
 	    return (true);
 	error(_("Error converting %s/%s; command was \"%s %s\"; exit status %x")
 	    , (const char*) mime.getType()

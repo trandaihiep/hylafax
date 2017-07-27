@@ -1017,7 +1017,7 @@ FaxModem::writeECMData(TIFF* tif, u_char* buf, u_int cc, const Class2Params& par
 
 		    // read the page count from the counter pipe
 		    Sys::read(counterFd[0], (char*) &recvEOLCount, sizeof(recvEOLCount));
-		    (void) Sys::waitpid(decoderPid);
+		    (void) Sys::WaitForSingleObject(decoderPid);
 		    Sys::close(decoderFd[1]);
 		    Sys::close(counterFd[0]);
 		}

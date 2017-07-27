@@ -820,68 +820,23 @@ Class1Modem::recvPage(TIFF* tif, u_int& ppm, Status& eresult, const fxStr& id)
 			 * sufficient time to complete.
 			 */
 			int fcfd[2];		// flow control file descriptors for the pipe
-			pid_t fcpid = -1;	// flow control process id for the child
 			if (pipe(fcfd) >= 0) {
-			    fcpid = fork();
-			    char tbuf[1];	// trigger signal
-			    tbuf[0] = 0xFF;
-			    time_t rrstart = Sys::now();
-			    switch (fcpid) {
-				case -1:	// error
-				    protoTrace("Protocol flow control unavailable due to fork error.");
-				    TIFFWriteDirectory(tif);
-				    Sys::close(fcfd[0]);
-				    Sys::close(fcfd[1]);
-				    break;
-				case 0:		// child
-				    Sys::close(fcfd[1]);
-				    do {
-					fd_set rfds;
-					FD_ZERO(&rfds);
-					FD_SET(fcfd[0], &rfds);
-					struct timeval tv;
-					tv.tv_sec = 2;		// we've got a 3-second window, use it
-					tv.tv_usec = 0;
-#if CONFIG_BADSELECTPROTO
-					if (!select(fcfd[0]+1, (int*) &rfds, NULL, NULL, &tv)) {
-#else
-					if (!select(fcfd[0]+1, &rfds, NULL, NULL, &tv)) {
-#endif
-					    bool gotresponse = true;
-					    u_short rnrcnt = 0;
-					    do {
-						if (eresult.value() != 0) break;
-						(void) transmitFrame(params.ec != EC_DISABLE ? FCF_RNR : FCF_CRP|FCF_RCVR);
-						traceFCF("RECV send", params.ec != EC_DISABLE ? FCF_RNR : FCF_CRP);
-						HDLCFrame rrframe(conf.class1FrameOverhead);
-						if (gotresponse = recvFrame(rrframe, FCF_RCVR, conf.t2Timer)) {
-						    traceFCF("RECV recv", rrframe.getFCF());
-						    if (rrframe.getFCF() == FCF_DCN) {
-							protoTrace("RECV recv DCN");
-							eresult = Status(108, "COMREC received DCN (sender abort)");
-							gotEOT = true;
-							recvdDCN = true;
-						    } else if (params.ec != EC_DISABLE && rrframe.getFCF() != FCF_RR) {
-							protoTrace("Ignoring invalid response to RNR.");
-						    }
-						    if (!useV34) (void) switchingPause(eresult);
-						}
-					    } while (!gotEOT && !recvdDCN && !gotresponse && ++rnrcnt < 2 && Sys::now()-rrstart < 60);
-					    if (!gotresponse) eresult = Status(109, "No response to RNR repeated 3 times.");
-					} else {		// parent finished TIFFWriteDirectory
-					    tbuf[0] = 0;
-					}
-				    } while (!gotEOT && !recvdDCN && tbuf[0] != 0 && Sys::now()-rrstart < 60);
-				    Sys::read(fcfd[0], NULL, 1);
-				    _exit(0);
-				default:	// parent
-				    Sys::close(fcfd[0]);
-				    TIFFWriteDirectory(tif);
-				    Sys::write(fcfd[1], tbuf, 1);
-				    (void) Sys::waitpid(fcpid);
-				    Sys::close(fcfd[1]);
-				    break;
-			    }
+
+				HANDLE handle = (HANDLE)_beginthreadex(NULL, 0, &WorkerThreadFunc2, (void *) fcfd, 0, NULL );
+
+				if (!handle) {
+					protoTrace("Protocol flow control unavailable due to fork error.");
+					TIFFWriteDirectory(tif);
+					Sys::close(fcfd[0]);
+					Sys::close(fcfd[1]);
+				} else {
+					Sys::close(fcfd[0]);
+					TIFFWriteDirectory(tif);
+					Sys::write(fcfd[1], tbuf, 1);
+					(void) Sys::WaitForSingleObject(handle);
+					Sys::close(fcfd[1]);
+					CloseHandle(handle);
+				}
 			} else {
 			    protoTrace("Protocol flow control unavailable due to pipe error.");
 			    TIFFWriteDirectory(tif);
@@ -1037,6 +992,59 @@ Class1Modem::recvPage(TIFF* tif, u_int& ppm, Status& eresult, const fxStr& id)
 	return (true);
     }
     return (false);
+}
+
+UINT WINAPI Class1Modem::WorkerThreadFunc1(void* lpParam)
+{
+	int*fcfd = (int*)lpParam;
+
+	char tbuf[1];	// trigger signal
+	tbuf[0] = 0xFF;
+	time_t rrstart = Sys::now();
+
+	Sys::close(fcfd[1]);
+	do {
+		fd_set rfds;
+		FD_ZERO(&rfds);
+		FD_SET(fcfd[0], &rfds);
+		struct timeval tv;
+		tv.tv_sec = 2;		// we've got a 3-second window, use it
+		tv.tv_usec = 0;
+#if CONFIG_BADSELECTPROTO
+		if (!select(fcfd[0]+1, (int*) &rfds, NULL, NULL, &tv)) {
+#else
+		if (!select(fcfd[0]+1, &rfds, NULL, NULL, &tv)) {
+#endif
+			bool gotresponse = true;
+			u_short rnrcnt = 0;
+			do {
+				if (eresult.value() != 0) break;
+				(void) transmitFrame(params.ec != EC_DISABLE ? FCF_RNR : FCF_CRP|FCF_RCVR);
+				traceFCF("RECV send", params.ec != EC_DISABLE ? FCF_RNR : FCF_CRP);
+				HDLCFrame rrframe(conf.class1FrameOverhead);
+				if (gotresponse = recvFrame(rrframe, FCF_RCVR, conf.t2Timer)) {
+					traceFCF("RECV recv", rrframe.getFCF());
+					if (rrframe.getFCF() == FCF_DCN) {
+						protoTrace("RECV recv DCN");
+						eresult = Status(108, "COMREC received DCN (sender abort)");
+						gotEOT = true;
+						recvdDCN = true;
+					} else if (params.ec != EC_DISABLE && rrframe.getFCF() != FCF_RR) {
+						protoTrace("Ignoring invalid response to RNR.");
+					}
+					if (!useV34) (void) switchingPause(eresult);
+				}
+			} while (!gotEOT && !recvdDCN && !gotresponse && ++rnrcnt < 2 && Sys::now()-rrstart < 60);
+			if (!gotresponse) eresult = Status(109, "No response to RNR repeated 3 times.");
+		} else {		// parent finished TIFFWriteDirectory
+			tbuf[0] = 0;
+		}
+	} while (!gotEOT && !recvdDCN && tbuf[0] != 0 && Sys::now()-rrstart < 60);
+	Sys::read(fcfd[0], NULL, 1);
+
+	_endthreadex(0);
+
+	return 0;
 }
 
 void
@@ -1745,66 +1753,23 @@ Class1Modem::recvPageECMData(TIFF* tif, const Class2Params& params, Status& eres
 	 * sufficient time to complete.   
 	*/
 	int fcfd[2];		// flow control file descriptors for the pipe
-	pid_t fcpid = -1;	// flow control process id for the child
 	if (pipe(fcfd) >= 0) {
-	    fcpid = fork();
-	    char tbuf[1];	// trigger signal
-	    tbuf[0] = 0xFF;
-	    time_t rrstart = Sys::now();
-	    switch (fcpid) {
-		case -1:	// error
-		    protoTrace("Protocol flow control unavailable due to fork error.");
-		    writeECMData(tif, block, cc, params, seq);
-		    Sys::close(fcfd[0]);
-		    Sys::close(fcfd[1]);
-		    break;
-		case 0:		// child
-		    Sys::close(fcfd[1]);
-		    do {
-			fd_set rfds;
-			FD_ZERO(&rfds);
-			FD_SET(fcfd[0], &rfds);
-			struct timeval tv;
-			tv.tv_sec = 1;		// 1000 ms should be safe
-			tv.tv_usec = 0;
-#if CONFIG_BADSELECTPROTO
-			if (!select(fcfd[0]+1, (int*) &rfds, NULL, NULL, &tv)) {
-#else
-			if (!select(fcfd[0]+1, &rfds, NULL, NULL, &tv)) {
-#endif
-			    bool gotresponse = true;
-			    u_short rnrcnt = 0;
-			    do {
-				if (!useV34) (void) switchingPause(eresult);
-				if (eresult.value() != 0) break;
-				(void) transmitFrame(FCF_RNR|FCF_RCVR);
-				traceFCF("RECV send", FCF_RNR);
-				HDLCFrame rrframe(conf.class1FrameOverhead);
-				if (gotresponse = recvFrame(rrframe, FCF_RCVR, conf.t2Timer)) {
-				    traceFCF("RECV recv", rrframe.getFCF());
-				    if (rrframe.getFCF() == FCF_DCN) {
-					protoTrace("RECV recv DCN");
-					eresult = Status(108, "COMREC received DCN (sender abort)");
-					gotEOT = true;
-					recvdDCN = true;
-				    } else if (params.ec != EC_DISABLE && rrframe.getFCF() != FCF_RR) {
-					protoTrace("Ignoring invalid response to RNR.");
-				    }
-				}
-			    } while (!recvdDCN && !gotEOT && !gotresponse && ++rnrcnt < 2 && Sys::now()-rrstart < 60);
-			    if (!gotresponse) eresult = Status(109, "No response to RNR repeated 3 times.");
-			} else tbuf[0] = 0;	// parent finished writeECMData
-		    } while (!gotEOT && !recvdDCN && tbuf[0] != 0 && Sys::now()-rrstart < 60);
-		    Sys::read(fcfd[0], NULL, 1);
-		    _exit(0);
-		default:	// parent
-		    Sys::close(fcfd[0]);
-		    writeECMData(tif, block, cc, params, seq);
-		    Sys::write(fcfd[1], tbuf, 1);
-		    (void) Sys::waitpid(fcpid);
-		    Sys::close(fcfd[1]);
-		    break;
-	    }
+
+		HANDLE handle = (HANDLE)_beginthreadex(NULL, 0, &WorkerThreadFunc2, (void *) fcfd, 0, NULL );
+		
+		if (!handle) {
+			protoTrace("Protocol flow control unavailable due to fork error.");
+			writeECMData(tif, block, cc, params, seq);
+			Sys::close(fcfd[0]);
+			Sys::close(fcfd[1]);
+		} else {
+			Sys::close(fcfd[0]);
+			writeECMData(tif, block, cc, params, seq);
+			Sys::write(fcfd[1], tbuf, 1);
+			(void) Sys::WaitForSingleObject(handle);
+			Sys::close(fcfd[1]);
+			CloseHandle(handle);
+		}
 	} else {
 	    protoTrace("Protocol flow control unavailable due to pipe error.");
 	    writeECMData(tif, block, cc, params, seq);
@@ -1831,6 +1796,56 @@ Class1Modem::recvPageECMData(TIFF* tif, const Class2Params& params, Status& eres
 	return (false);
     }
     return (true);   		// signalRcvd is set, full page is received...
+}
+
+UINT WINAPI Class1Modem::WorkerThreadFunc2(void* lpParam)
+{
+	int*fcfd = (int*)lpParam;
+
+	time_t rrstart = Sys::now();
+	char tbuf[1];	// trigger signal
+	tbuf[0] = 0xFF;
+
+	Sys::close(fcfd[1]);
+	do {
+		fd_set rfds;
+		FD_ZERO(&rfds);
+		FD_SET(fcfd[0], &rfds);
+		struct timeval tv;
+		tv.tv_sec = 1;		// 1000 ms should be safe
+		tv.tv_usec = 0;
+#if CONFIG_BADSELECTPROTO
+		if (!select(fcfd[0]+1, (int*) &rfds, NULL, NULL, &tv)) {
+#else
+		if (!select(fcfd[0]+1, &rfds, NULL, NULL, &tv)) {
+#endif
+			bool gotresponse = true;
+			u_short rnrcnt = 0;
+			do {
+				if (!useV34) (void) switchingPause(eresult);
+				if (eresult.value() != 0) break;
+				(void) transmitFrame(FCF_RNR|FCF_RCVR);
+				traceFCF("RECV send", FCF_RNR);
+				HDLCFrame rrframe(conf.class1FrameOverhead);
+				if (gotresponse = recvFrame(rrframe, FCF_RCVR, conf.t2Timer)) {
+					traceFCF("RECV recv", rrframe.getFCF());
+					if (rrframe.getFCF() == FCF_DCN) {
+						protoTrace("RECV recv DCN");
+						eresult = Status(108, "COMREC received DCN (sender abort)");
+						gotEOT = true;
+						recvdDCN = true;
+					} else if (params.ec != EC_DISABLE && rrframe.getFCF() != FCF_RR) {
+						protoTrace("Ignoring invalid response to RNR.");
+					}
+				}
+			} while (!recvdDCN && !gotEOT && !gotresponse && ++rnrcnt < 2 && Sys::now()-rrstart < 60);
+			if (!gotresponse) eresult = Status(109, "No response to RNR repeated 3 times.");
+		} else tbuf[0] = 0;	// parent finished writeECMData
+	} while (!gotEOT && !recvdDCN && tbuf[0] != 0 && Sys::now()-rrstart < 60);
+	Sys::read(fcfd[0], NULL, 1);
+	_endthreadex(0);
+
+	return 0;
 }
 
 /*

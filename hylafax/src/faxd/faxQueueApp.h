@@ -86,6 +86,13 @@ private:
 
 	void start(u_short s = 0);
     };
+	struct workerthreaddata {
+		fxStr cmd;
+		fxStr dargs;
+		fxStr deviceID;
+		fxStr file;
+		int nfile;
+	};
 // configuration stuff
     fxStr	configFile;		// configuration filename
     fxStr	contCoverPageTemplate;	// continuation cover page template
@@ -268,6 +275,10 @@ private:
     void	setupParams(TIFF*, Class2Params&, const FaxMachineInfo&);
 // document reference counting support
     void	unrefDoc(const fxStr& file);
+
+	static UINT WINAPI WorkerThreadFuncSendStart(void* lpParam);
+	static UINT WINAPI WorkerThreadFuncConverter(void* lpParam);
+	static UINT WINAPI WorkerThreadFuncSetReadyToRun(void* lpParam);
 public:
     faxQueueApp();
     ~faxQueueApp();

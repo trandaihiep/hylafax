@@ -258,7 +258,7 @@ SendFaxClient::makeCoverPage(const SendFaxJob& job, fxStr& file, fxStr& emsg)
 		(void) Sys::close(pfd[0]);
 		(void) Sys::close(fd);
 		int status;
-		if (Sys::waitpid(pid, status) == pid && status == 0) {
+		if (Sys::WaitForSingleObject(pid, status) == pid && status == 0) {
 		    file = tmpFile;
 		    return (true);
 		}

@@ -349,41 +349,36 @@ faxGettyApp::answerPhone(AnswerType atype, CallType ctype, const CallID& callid,
 	int pipefd[2], status;
 	char line[1024];
 	pipe(pipefd);
-	pid_t pid = fork();
-	switch (pid) {
-	    case -1:
+
+	workerthreaddata data;
+	data.pipefd = pipefd;
+	data.cmd = cmd;
+	HANDLE handle = (HANDLE)_beginthreadex(NULL, 0, &WorkerThreadFunc1, (void *) &data, 0, NULL );
+
+	if (!handle) {
 		eresult = Status(305, "Could not fork for local ID");
 		logError("%s", eresult.string());
 		Sys::close(pipefd[0]);
 		Sys::close(pipefd[1]);
-		break;
-	    case  0:
-		dup2(pipefd[1], STDOUT_FILENO);
-		Sys::close(pipefd[0]);
-		Sys::close(pipefd[1]);
-		execl("/bin/sh", "sh", "-c", (const char*) cmd, (char*) NULL);
-		sleep(1);
-		_exit(1);
-	    default:
+	} else {
 		Sys::close(pipefd[1]);
 		{
-		    FILE* fd = fdopen(pipefd[0], "r");
-		    while (fgets(line, sizeof (line)-1, fd)){
-			line[strlen(line)-1]='\0';		// Nuke \n at end of line
-			(void) readConfigItem(line);
-		    }
-		    Sys::waitpid(pid, status);
-		    if (status != 0)
-		    {
-			eresult = Status(306, "Bad exit status %#o for \'%s\'", status, (const char*) cmd);
-			logError("%s", eresult.string());
-		    }
-		    // modem settings may have changed...
-		    FaxModem* modem = (FaxModem*) ModemServer::getModem();
-		    modem->pokeConfig(false);
+			FILE* fd = fdopen(pipefd[0], "r");
+			while (fgets(line, sizeof (line)-1, fd)){
+				line[strlen(line)-1]='\0';		// Nuke \n at end of line
+				(void) readConfigItem(line);
+			}
+			Sys::WaitForSingleObject(handle, status);
+			if (status != 0)
+			{
+				eresult = Status(306, "Bad exit status %#o for \'%s\'", status, (const char*) cmd);
+				logError("%s", eresult.string());
+			}
+			// modem settings may have changed...
+			FaxModem* modem = (FaxModem*) ModemServer::getModem();
+			modem->pokeConfig(false);
 		}
 		Sys::close(pipefd[0]);
-		break;
 	}
     }
 
@@ -468,6 +463,21 @@ faxGettyApp::answerPhone(AnswerType atype, CallType ctype, const CallID& callid,
 
 
     answerCleanup();
+}
+
+UINT WINAPI faxGettyApp::WorkerThreadFunc1(void* lpParam)
+{
+	workerthreaddata*data = (workerthreaddata*)lpParam;
+	int* pipefd = data->pipefd;
+
+	dup2(pipefd[1], STDOUT_FILENO);
+	Sys::close(pipefd[0]);
+	Sys::close(pipefd[1]);
+	execl("/bin/sh", "sh", "-c", (const char*) data->cmd, (char*) NULL);
+	sleep(1);
+	_endthreadex(0);
+
+	return 0;
 }
 
 /*
@@ -726,6 +736,7 @@ faxGettyApp::runGetty(
     delete getty;
     return (CallType)((status >> 8) & 0xff);
 }
+
 
 /*
  * Set the number of rings to wait before answering

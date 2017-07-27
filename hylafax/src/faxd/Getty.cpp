@@ -221,7 +221,7 @@ Getty::setupSession(int fd)
 bool
 Getty::wait(int& status, bool block)
 {
-    return (Sys::waitpid(pid, status, block ? 0 : WNOHANG) == pid);
+    return (Sys::WaitForSingleObject(pid, status, block ? 0 : WNOHANG) == pid);
 }
 
 void
